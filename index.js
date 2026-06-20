@@ -6,6 +6,7 @@ const {
   Bodies,
 } = Matter;
 
+const cells = 3
 const width = 600;
 const height = 600;
 
@@ -38,6 +39,34 @@ const walls = [
 
 World.add(world, walls);
 
-const grid = Array(3)
-.fill(null)
-.map(() => Array(3).fill(false))
+const grid = Array(cells)
+  .fill(null)
+  .map(() => Array(cells).fill(false))
+
+const vertical = Array(cells)
+  .fill(null)
+  .map(() => Array(cells - 1).fill(false))
+
+const horizontals = Array(cells - 1)
+  .fill(null)
+  .map(() => Array(cells).fill(false))
+
+const startRow = Math.floor(Math.random() * cells)
+const startColumn = Math.floor(Math.random() * cells)
+
+const stepThroughCells = (row, column) =>{
+  if(grid[row][column]){
+    return
+  }
+  grid[row][column] = true
+}
+
+const neighbors = [
+  [row - 1, column],
+  [row, column + 1],
+  [row + 1, column],
+  [row, column - 1]
+]
+
+stepThroughCells(startColumn, startColumn)
+console.log(grid)
