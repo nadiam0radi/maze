@@ -71,9 +71,9 @@ const stepThroughCell = (row, column) => {
 
   // Assemble randomly-ordered list of neighbors
   const neighbors = shuffle([
-    [row - 1, column, 'up'],
-    [row, column + 1, 'right'],
-    [row + 1, column, 'down'],
+    // [row - 1, column, 'up'],
+    // [row, column + 1, 'right'],
+    // [row + 1, column, 'down'],
     [row, column - 1, 'left']
   ]);
 
@@ -85,6 +85,12 @@ for(let neighbor of neighbors){
 
   if(grid[nextRow][nextColumn]){
     continue
+  }
+
+  if (direction === 'left'){
+    verticals[row][column -1] = true
+  }else if (direction === 'right'){
+    verticals[row][column] = true
   }
 
 }
