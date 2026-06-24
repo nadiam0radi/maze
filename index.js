@@ -96,6 +96,7 @@ for(let neighbor of neighbors){
   }else if(direction === 'down'){
     horizontals[row][column] = true
   }
+    stepThroughCell(nextRow,  nextColumn)
 
 }
 
